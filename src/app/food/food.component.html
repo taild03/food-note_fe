@@ -1,0 +1,27 @@
+<div class="food-item-container">
+  <div class="food-card">
+    <img class="food-image" [src]="imagePath" [alt]="food.name" />
+  </div>
+  <div class="food-info">
+    <div class="food-details">
+      <div class="food-name-wrapper">
+        <div class="food-name">{{ food.name }}</div>
+      </div>
+      <span class="food-address">{{ food.address }}</span>
+    </div>
+    <div class="food-price-actions">
+      <span class="food-price">{{ food.price }}</span>
+      <div class="food-buttons">
+        <p-button
+          class="btn-trash"
+          icon="pi pi-trash"
+          [rounded]="true"
+          severity="danger"
+          [outlined]="true"
+          (click)="onDeleteFood()"
+        ></p-button>
+        <p-button class="btn-view" label="View" [style]="{ 'background-color': '#6A9C89'}" (click)="onViewingFood()"></p-button>
+      </div>
+    </div>
+  </div>
+</div>

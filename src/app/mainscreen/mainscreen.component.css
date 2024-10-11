@@ -1,0 +1,57 @@
+.centered-splitter {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  :host ::ng-deep .p-message-info {
+    background-color: #6a9c89;
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+  :host ::ng-deep .p-message-icon {
+    color: #ffffff;
+  }
+  .fab {
+    position: fixed; /* Keeps the button in place */
+    bottom: 20px;    /* Distance from the bottom of the screen */
+    right: 20px;     /* Distance from the right side of the screen */
+    width: 56px;     /* Standard size for FABs */
+    height: 56px;
+    border-radius: 50%; /* Makes the button circular */
+    background-color: #6A9C89; /* Primary color */
+    color: white;    /* Text/icon color */
+    border: none;    /* Remove default border */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Adds a shadow */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth background change */
+    z-index: 10; /* Ensures the button is above the pseudo-element */
+}
+
+.fab:hover {
+    background-color: #16423C; /* Darker shade on hover */
+}
+
+.fab::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px; /* Slightly larger than the button */
+    height: 80px; /* Slightly larger than the button */
+    border-radius: 50%; /* Makes the pseudo-element circular */
+    background-color: rgba(32, 199, 163, 0.2); /* Light blue circle */
+    z-index: -1; /* Position behind the button */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.fab:hover::before {
+    background-color: rgba(76, 204, 198, 0.3); /* Slightly darker on hover */
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly grow on hover */
+}
+

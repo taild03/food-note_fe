@@ -1,0 +1,79 @@
+<div class="modal-backdrop" (click)="onCancel()"></div>
+<div class="modal-content">
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        pInputText
+        [(ngModel)]="enteredName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        required
+        pInputText
+        [(ngModel)]="enteredAddress"
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        required
+        pInputNumber
+        [(ngModel)]="enteredPrice"
+      />
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <div class="form-picture">
+        @if (imagePath) {
+        <p-image
+          [src]="imagePath"
+          alt="Food Image"
+          width="500"
+          height="300"
+          [preview]="true"
+        ></p-image>
+        }
+        <input
+          type="file"
+          (change)="onFileSelected($event)"
+          accept="image/*"
+          style="display: none"
+          #fileInput
+        />
+        <p-button
+          label="Select Image"
+          icon="pi pi-upload"
+          (onClick)="fileInput.click()"
+        ></p-button>
+      </div>
+    </div>
+    <div class="form-buttons">
+      <p-button
+        label="Save"
+        [text]="true"
+        [raised]="true"
+        [style]="{ 'background-color': '#6A9C89', color: '#ffffff' }"
+        (click)="onSave()"
+      ></p-button>
+      <p-button
+        label="Cancel"
+        [raised]="true"
+        severity="danger"
+        (click)="onCancel()"
+      ></p-button>
+    </div>
+  </form>
+</div>

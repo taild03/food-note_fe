@@ -1,0 +1,79 @@
+<div class="modal-backdrop" (click)="onCancel()"></div> <!-- Backdrop for modal -->
+<div class="modal-content">
+  <form>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        pInputText
+        [(ngModel)]="editedFood.name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="address">Address:</label>
+      <input
+        type="text"
+        id="address"
+        name="address"
+        required
+        pInputText
+        [(ngModel)]="editedFood.address"
+      />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input
+        type="number"
+        id="price"
+        name="price"
+        required
+        pInputNumber
+        [(ngModel)]="editedFood.price"
+      />
+    </div>
+    <div class="form-group">
+      <label for="photo">Photo:</label>
+      <div class="form-picture">
+      <p-image
+        [src]="imagePath"
+        [alt]="editedFood.image"
+        width="500"
+        [preview]="true"
+        [(ngModel)]="editedFood.image" disabled="true"
+      />
+      <!-- <p-button label="Change picture"></p-button> -->
+      <input 
+      type="file" 
+      (change)="onFileSelected($event)" 
+      accept="image/*" 
+      style="display: none" 
+      #fileInput
+    >
+    <p-button
+      label="Change picture"
+      icon="pi pi-upload"
+      (onClick)="fileInput.click()"
+    ></p-button>
+    </div>
+  </div>
+
+    <div class="form-buttons">
+      <p-button
+        label="Save"
+        [text]="true"
+        [raised]="true"
+        [style]="{ 'background-color': '#6A9C89', color: '#ffffff' }"
+        (click)="onSave()"
+      ></p-button>
+      <p-button
+        label="Cancel"
+        [raised]="true"
+        severity="danger"
+        (click)="onCancel()"
+      ></p-button>
+    </div>
+  </form>
+</div>

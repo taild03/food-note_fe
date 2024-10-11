@@ -1,0 +1,46 @@
+.no-food-container {
+    display: flex;
+    flex-direction: column; /* Stacks the image and text vertically */
+    justify-content: center; /* Centers items vertically */
+    align-items: center; /* Centers items horizontally */
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    position: fixed; /* Fixes the container in the viewport */
+    top: 100px;
+    left: 0;
+    z-index: 10; /* Ensures it appears above other content */
+    text-align: center; /* Center-aligns text */
+    padding-top: 20px;
+  }
+  
+  .image-wrapper {
+    width: 200px; /* Define the container size */
+    height: 200px; /* Should match the width for a perfect circle */
+    border-radius: 50%; /* Makes the container circular */
+    background-color: white; /* White background for the container */
+    display: flex; /* Flex to center the image */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center; /* Center the image vertically */
+    border: 5px solid #ffffff; /* Outer circle border */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    margin-bottom: 20px; /* Space between image and text */
+  }
+  
+  .no-food-image {
+    width: 100%; /* Ensures the image fills the container */
+    height: 100%; /* Ensures the image fills the container */
+    border-radius: 50%; /* Makes the image itself circular */
+    object-fit: cover; /* Ensures the image maintains its aspect ratio and covers the container */
+  }
+  
+  .no-food-message {
+    font-family: 'Poppins', sans-serif; /* Consistent font */
+    color: #333; /* Dark text color */
+    font-size: 1rem; /* Emphasize the message */
+    margin: 0; /* Removes default margin */
+    padding: 10px 20px; /* Adds padding around the text */
+    background-color: rgba(255, 255, 255, 0.8); /* Light, semi-transparent background */
+    border-radius: 10px; /* Adds rounding to the message background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  }
+  

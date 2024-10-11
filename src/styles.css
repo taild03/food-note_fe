@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/md-light-indigo/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+@import "primeflex/primeflex.css";
+/* @import "primeflex/themes/primeone-dark.css"; */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    /* font-family: "Poppins", sans-serif; */
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-image: url('assets/pexels-chanwalrus-958545.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin: 0;
+    height: 100vh;
+  }
+  /* body {
+    font-family: var(--font-family);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    background-image: url('assets/pexels-chanwalrus-958545.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+} */
+  

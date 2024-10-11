@@ -1,0 +1,31 @@
+    .card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    margin: 1rem;
+    width: 100%;
+    
+  }
+  
+  .food-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .food-item {
+    padding: 0.5rem;
+    align-items: center;
+  }
+  
+  .border-top {
+    border-top: 1px solid #dee2e6;
+  }
+  
+  @media (min-width: 640px) {
+    .food-item {
+      /* display: flex; */
+      align-items: center;
+    }
+  }
+  

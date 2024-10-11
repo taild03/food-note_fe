@@ -1,0 +1,21 @@
+<p-scrollPanel [style]="{ width: '105%', height: '100%' }">
+  <div class="card">
+    <p-dataView #dv [value]="foods">
+      <ng-template pTemplate="list" let-foods>
+        <div class="food-list">
+          <div
+            *ngFor="let food of foods; let first = first"
+            class="food-item"
+            [ngClass]="{ 'border-top': !first }"
+          >
+            <app-food
+              [food]="food"
+              (select)="onFoodSelected($event)"
+              (foodDeleted)="onFoodDeleted($event)"
+            ></app-food>
+          </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+</p-scrollPanel>
