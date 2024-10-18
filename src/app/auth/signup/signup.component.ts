@@ -21,17 +21,17 @@ export class SignupComponent {
   private router = inject(Router);
   private authService = inject(AuthService);
   
-  onSubmit(form: NgForm) {
-    if (form.invalid) return;
-
-    this.authService.signup(form.value).subscribe({
-      next: (response) => {
-        this.router.navigate(['/login']);
+  onSignup() {
+    this.authService.signup(this.email, this.password).subscribe(
+      (token) => {
+        console.log('Signup successful:', token);
+        this.router.navigate(['/login']); // Redirect to home or main screen after signup
       },
-      error: (error) => {
-        console.error('Signup failed', error);
+      (error) => {
+        console.error('Signup failed:', error);
+        alert('Signup failed');
       }
-    });
+    );
   }
   onLogin() {
     this.router.navigate(['/login']);

@@ -1,6 +1,13 @@
-<app-header></app-header>
-
+<div class="sign-out-button">
+  <p-button
+    icon="pi pi-sign-out"
+    [rounded]="true"
+    severity="danger"
+    (click)="onLogout()"
+  />
+</div>
 <router-outlet></router-outlet>
+<app-header></app-header>
 
 @if (foods.length) {
 <p-splitter
@@ -8,7 +15,7 @@
   [style]="{ height: '100%', width: '100%' }"
 >
   <ng-template pTemplate>
-    <app-food-list 
+    <app-food-list
       [foods]="foods"
       (foodSelected)="onFoodSelected($event)"
       (foodDeleted)="onFoodDeleted($event)"
@@ -17,31 +24,32 @@
   <ng-template pTemplate>
     <div style="width: 100%; height: 100%">
       @if (selectedFood) {
-        <app-food-details 
-          [food]="selectedFood"
-          (foodDeleted)="onFoodDeleted($event)"
-        ></app-food-details>
+      <app-food-details
+        [food]="selectedFood"
+        (foodDeleted)="onFoodDeleted($event)"
+      ></app-food-details>
       } @else {
-        <p-messages 
-          [(value)]="messages"
-          [enableService]="false"
-          [closable]="false"
-          styleClass="custom-message">
-        </p-messages>
+      <p-messages
+        [(value)]="messages"
+        [enableService]="false"
+        [closable]="false"
+        styleClass="custom-message"
+      >
+      </p-messages>
       }
     </div>
   </ng-template>
 </p-splitter>
 } @else {
-  <app-no-food></app-no-food>
+<app-no-food></app-no-food>
 }
 <button
   class="fab"
   (click)="onFabClick()"
   pTooltip="Click to add your new favorite food"
   tooltipPosition="left"
-  showDelay="1000" 
-  hideDelay="300" 
+  showDelay="1000"
+  hideDelay="300"
 >
   <i class="pi pi-plus"></i>
 </button>

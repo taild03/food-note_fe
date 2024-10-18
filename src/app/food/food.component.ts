@@ -7,6 +7,7 @@ import { Food } from './food.model';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 import { FoodService } from '../food.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-food',
@@ -26,10 +27,19 @@ export class FoodComponent {
   @Input({ required: true }) food!: Food;
   @Output() select = new EventEmitter<number>();
   @Output() foodDeleted = new EventEmitter<number>();
+  private userId: number | null;
 
   private foodService = inject(FoodService);
   private router = inject(Router);
+  private authService = inject(AuthService);
 
+  constructor() {
+    this.userId = this.authService.getCurrentUserId();
+    if (!this.userId) {
+      this.router.navigate(['/login']);
+      return;
+    }
+  }
   get imagePath() {
     return 'assets/foods/' + this.food.image;
   }
@@ -40,7 +50,7 @@ export class FoodComponent {
   }
 
   onDeleteFood() {
-    this.foodService.removeFood(this.food.id);
+    this.foodService.deleteFood(this.food.id, this.userId!);
     this.foodDeleted.emit(this.food.id);
   }
 }

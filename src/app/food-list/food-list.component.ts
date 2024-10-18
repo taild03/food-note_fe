@@ -32,7 +32,7 @@ private router = inject(Router);
 
   onFoodDeleted(foodId: number) {
     this.foodDeleted.emit(foodId);
-    this.router.navigate(['/']);
+    this.router.navigate(['/home']);
 
   }
 }

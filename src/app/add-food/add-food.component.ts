@@ -12,6 +12,7 @@ import { ImageModule } from 'primeng/image';
 import { FoodService } from '../food.service';
 import { Router } from '@angular/router';
 import { RouteService } from '../routes.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-add-food',
@@ -23,18 +24,28 @@ import { RouteService } from '../routes.service';
 export class AddFoodComponent {
   @Output() close = new EventEmitter();
   @ViewChild('fileInput') fileInput!: ElementRef;
-
+  
   enteredName = '';
   enteredAddress = '';
   enteredPrice = 0;
   enteredImage = '';
-
+  
   imagePath: string = '';
   selectedFile: File | null = null;
+  private userId: number | null;
 
   private foodService = inject(FoodService);
   private router = inject(Router);
   private routeService = inject(RouteService);
+  private authService = inject(AuthService);
+
+  constructor() {
+    this.userId = this.authService.getCurrentUserId();
+    if (!this.userId) {
+      this.router.navigate(['/login']);
+      return;
+    }
+  }
 
   onCancel() {
     const previousUrl = this.routeService.getPreviousUrl();
@@ -64,13 +75,23 @@ export class AddFoodComponent {
       this.enteredPrice &&
       this.enteredImage
     ) {
-      this.foodService.addFood({
-        name: this.enteredName,
-        address: this.enteredAddress,
-        price: this.enteredPrice,
-        image: this.enteredImage,
-      });
-      this.router.navigate(['/']);
+      this.foodService
+        .addFood({
+          name: this.enteredName,
+          address: this.enteredAddress,
+          price: this.enteredPrice,
+          image: this.enteredImage,
+        }, this.userId!)
+        .subscribe({
+          next: (response) => {
+            console.log('Food added: ', response);
+            this.router.navigate(['/home']);
+          },
+          error: (err) => {
+            console.error('Error adding food:', err);
+            window.alert('Failed to add food. Please try again.'); // Notify user of the error
+          },
+        });
     } else {
       window.alert('Please fill in all fields');
     }

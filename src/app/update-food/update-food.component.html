@@ -1,5 +1,6 @@
 <div class="modal-backdrop" (click)="onCancel()"></div> <!-- Backdrop for modal -->
 <div class="modal-content">
+  @if (!loading && editedFood) {
   <form>
     <div class="form-group">
       <label for="name">Name:</label>
@@ -42,7 +43,6 @@
         [alt]="editedFood.image"
         width="500"
         [preview]="true"
-        [(ngModel)]="editedFood.image" disabled="true"
       />
       <!-- <p-button label="Change picture"></p-button> -->
       <input 
@@ -76,4 +76,5 @@
       ></p-button>
     </div>
   </form>
+}
 </div>
